@@ -2,12 +2,18 @@
   <img src="logo.png" width="500px" height="350px" alt=" Logo">
 </p>
 
-### 👉 [Gewechat🤖](https://github.com/Devo919/Gewechat)，个人微信免费开源框架，支持二次开发、任意语言都可接入，Restful API接入。
-#### 框架优势：
+## 👉 Gewechat🤖
+
+个人微信免费开源框架，支持二次开发、任意语言都可接入，Restful API接入。
+
+### 框架优势：
+
  - 简单易用，无接入难度，区别于其它开源项目，本框架无需用户安装电脑微信，无需安装手机破解插件，只需扫码登录即可使用，操作简单，目前是大厂最稳定的主流使用方案。
-#### 主要能力：
+
+### 主要能力：
+
 * 消息自动化、给指定对象（好友、群组）发送文本、图片、文件、emoji表情、小程序、语音等消息
-* 自定义消息处理、自动回复、自定义关键字回复、AI回复、消息防撤回、各种自定义类型交互
+* 自定义消息处理、自动回复、自定义关键字回复、AI回复、各种自定义类型、RPA自动化业务交互
 * 群管理及好友管理、设置好友备注、邀请好友统计、拉好友进群等
 * 各种业务模型接入，例如chatgpt、sora、大数据及客服模型
 * 基于框架您可以创造更多有趣的功能...
@@ -15,7 +21,6 @@
 <br/>
 <details><summary>免责声明【必读】</summary>
 <br/>
-
 - 本框架仅供学习和技术研究使用，不得用于任何商业或非法行为，否则后果自负。
 
 - 本框架的作者不对本工具的安全性、完整性、可靠性、有效性、正确性或适用性做任何明示或暗示的保证，也不对本工具的使用或滥用造成的任何直接或间接的损失、责任、索赔、要求或诉讼承担任何责任。
@@ -25,13 +30,9 @@
 - 本框架的使用者应遵守相关法律法规，尊重微信的版权和隐私，不得侵犯微信或其他第三方的合法权益，不得从事任何违法或不道德的行为。
 
 - 本框架的使用者在下载、安装、运行或使用本工具时，即表示已阅读并同意本免责声明。如有异议，请立即停止使用本工具，并删除所有相关文件。
-
 </details>
 <br/>
 <details><summary>点击查看功能清单</summary><br/>
-
-
-
 + [x] 登录模块：获取登录二维码、执行登录、设置消息回调地址
 
 + [x] 联系人模块：获取通讯录列表、获取通讯录信息、搜索好友、添加好友、同意添加好友、删除好友、设置好友仅聊天、设置好友备注
@@ -48,19 +49,21 @@
 
 + [x] 账号管理模块：断线重连、退出微信、检查在线
 </details>
+<br/>
 
+## 🚀 快速入门
 
-<br/><br/>
-# 🚀 快速入门
+### 安装Docker
 
-#### 安装 (Centos Docker安装，已安装Docker可跳过)  
-
+> Centos Docker安装，已安装Docker可跳过
 
 1、安装gcc相关
+
 ```
 yum -y install gcc
 yum -y install gcc-c++
 ```
+
 2、配置镜像
 
 ```
@@ -68,12 +71,12 @@ yum install -y yum-utils
 yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 yum makecache fast
 ```
+
 3、安装docker
 
 ```
 yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
-
 
 4、启动docker
 
@@ -83,43 +86,43 @@ systemctl start docker
 systemctl enable docker.service
 ```
 
-#### 如何使用
+### 启动服务
 
-1、导入镜像
+1、拉取镜像
 
 ```
  docker pull registry.cn-hangzhou.aliyuncs.com/gewe/gewe:latest
  
  docker tag registry.cn-hangzhou.aliyuncs.com/gewe/gewe gewe
 ```
+
 2、运行镜像容器
 
 ```
 mkdir -p /root/temp
 docker run -itd -v /root/temp:/root/temp -p 2531:2531 -p 2532:2532 --privileged=true --name=gewe gewe /usr/sbin/init
 ```
+
 3、将容器设置成开机运行
 
 ```
 docker update --restart=always gewe
 ```
-4、API服务调用
 
-- [API文档](https://apifox.com/apidoc/shared-69ba62ca-cb7d-437e-85e4-6f3d3df271b1)
+### API服务调用
 
-```
-Api服务调用地址
-http://ip+":2531/v2/api"  
+1. API服务调用地址 `http://{服务ip}:2531/v2/api/{接口名}` 
 
-文件下载地址
-http://ip+":2532/download"
-```
+2. 文件下载地址 `http://{服务ip}:2532/download/{接口返回的文件路径}`
 
-### 项目架构设计
+3. 点击此处查看[详细API文档](https://apifox.com/apidoc/shared-69ba62ca-cb7d-437e-85e4-6f3d3df271b1)
+
+## 项目架构设计
+
  <img src="liucheng.jpg" width="600px" height="350px" alt=" Logo">
 
+## 基本用法（java示例）
 
-### 基本用法（java示例）
 - 其他语言执行restful接口可实现相同功能，支持各类语言接入。
  
 ```
@@ -154,8 +157,8 @@ http://ip+":2532/download"
   FavorApi.class     //收藏夹模块
 ```
 
+## 注意事项：
 
-### 注意事项：
 - 1、系统环境推荐：Centos7或Ubuntu2204
 - 2、硬件环境推荐：4核8G
 - 3、由于容器需要用到2531和2532端口，要保证服务器这两个端口没有被占用
@@ -163,8 +166,8 @@ http://ip+":2532/download"
 - 5、使用者必须搭建服务到同省服务器或者电脑里方可正常使用
 - 6、本框架面向个人娱乐使用，请勿用于任何商用场景
 
+## 交流群：
 
-### 交流群：
 <p align="center">
   <img src="mine.jpg" width="300px" height="300px" alt=" Logo">
 </p>
@@ -172,10 +175,9 @@ http://ip+":2532/download"
  添加好友备注GW加群交流
 </p>
 
+## 后续有新版本如何更新
 
-
-## 后续有新版本如何更新？
-#### 更新流程
+### 更新流程
 
 ```
 1、选择更新版本下载
@@ -183,9 +185,12 @@ http://ip+":2532/download"
 3、执行命令
     chmod +x install-gewe.sh
     ./install-gewe.sh
-
 ```
 
+
+## 友情链接
+- [gewechaty](https://github.com/mikoshu/gewechaty) 基于nodejs二次封装gewechat的易用框架
+- [rgewe-api](https://github.com/momo402/rgewe-api) 基于rust语言封装gewechat的api接口，同步API web页面文档
 
 ## 版本更新
 
@@ -202,4 +207,3 @@ http://ip+":2532/download"
 <details><summary>点击查看更多</summary>
 
 ### 暂无
-
